@@ -1,3 +1,4 @@
+using DockerAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DockerAPI.Controllers
@@ -12,22 +13,32 @@ namespace DockerAPI.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ColourContext context;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ColourContext context)
         {
             _logger = logger;
+            this.context = context;
         }
 
+        //[HttpGet]
+        //public IEnumerable<WeatherForecast> Get()
+        //{
+        //    return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        //    {
+        //        Date = DateTime.Now.AddDays(index),
+        //        TemperatureC = Random.Shared.Next(-20, 55),
+        //        Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        //    })
+        //    .ToArray();
+        //}
+
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public ActionResult<IEnumerable<Colour>> GetColourItems()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return context.ColourItems;
         }
+
+
     }
 }
