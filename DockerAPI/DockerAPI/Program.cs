@@ -1,3 +1,7 @@
+// Youtube:  Les Jackson
+// Docker Compose with .NET Core & SQL Server (Step by Step)
+// https://www.youtube.com/watch?v=4V7CwC_4oss
+
 using DockerAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
