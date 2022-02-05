@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 
 var configuration = builder.Configuration;
 
-var server = configuration["DBServer"] ?? "localhost";
+var server = configuration["DBServer"] ?? "localhost"; // Docker composer don't know what is "localhost", so we have to use "ms-sql-server" if we want to connect to containter
 var port = configuration["DBPort"] ?? "1433";
 // Do not do this in PRODUCTION. This is here just for the simplisity
 var user = configuration["DBUser"] ?? "SA";

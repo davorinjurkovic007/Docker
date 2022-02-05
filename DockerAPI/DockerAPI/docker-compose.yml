@@ -1,0 +1,15 @@
+﻿version: "3.9"  # optional since v1.27.0
+services:
+  ms-sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "yourStrong(!)Password" # don't use $ sign in password. Problem wiht MSSQL and login
+    ports:
+      - "1433:1433"
+  dockerapi:
+    build: . # Dockerfile file specifying what we want to build 
+    environment:
+      DBServer: "ms-sql-server"
+    ports:
+      - "8080:80"
